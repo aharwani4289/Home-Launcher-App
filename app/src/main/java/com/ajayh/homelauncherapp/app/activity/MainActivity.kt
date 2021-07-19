@@ -1,5 +1,8 @@
 package com.ajayh.homelauncherapp.app.activity
 
+import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
@@ -35,7 +38,16 @@ class MainActivity : BaseActivity() {
     private fun loadApps(apps: List<Application>) {
         binding.progressBarLayout.progressBar.gone()
         viewManager = GridLayoutManager(this, resources.getInteger(R.integer.rail_cards_span_count))
-        viewAdapter = AppAdapter(apps)
+        viewAdapter = AppAdapter(apps) { app ->
+            val context: Context = this@MainActivity
+            try {
+                val i: Intent? =
+                    context.getPackageManager().getLaunchIntentForPackage(app.packageName)
+                context.startActivity(i)
+            } catch (e: PackageManager.NameNotFoundException) {
+
+            }
+        }
         binding.appsList.apply {
             setHasFixedSize(true)
             layoutManager = viewManager

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ajayh.homelauncherapp.R
 import com.ajayh.homelauncherapp.sdk.app.model.ContentItem.Application
 
-class AppAdapter(private val data: List<Application>) :
+class AppAdapter(private val data: List<Application> , private val callback: ((Application) -> Unit)?) :
     RecyclerView.Adapter<AppAdapter.AppViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -24,9 +24,12 @@ class AppAdapter(private val data: List<Application>) :
 
     override fun onBindViewHolder(holder: AppViewHolder, position: Int) {
         if (data.size > position) {
-                Log.d("Ajay", "" + data[position])
-            (holder.view.findViewById(R.id.iv_app_name) as TextView).text = data[position].appName
-            (holder.view.findViewById(R.id.iv_logo) as ImageView).setImageDrawable(data[position].appBanner)
+            val appData = data[position]
+                (holder.view.findViewById(R.id.iv_app_name) as TextView).text = appData.appName
+            (holder.view.findViewById(R.id.iv_logo) as ImageView).setImageDrawable(appData.appBanner)
+            holder.view.setOnClickListener{
+                callback?.invoke(appData)
+            }
         }
     }
 
