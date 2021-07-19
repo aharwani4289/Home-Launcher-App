@@ -41,6 +41,7 @@ class MainActivity : BaseActivity() {
 //            (binding.tvClear.measuredWidth + resources.getDimension(R.dimen.dimen_size_10dp).toInt()),
 //            0
 //        )
+        binding.searchLayout.bringToFront()
         binding.tvClear.setOnClickListener {
             binding.etSearch.text?.clear()
         }

@@ -28,5 +28,10 @@
 
     <dimen name="content_card_margin">@dimen/margin_4dp</dimen>
     <dimen name="component_rail_margin_start">@dimen/margin_15dp</dimen>
+    <dimen name="margin_32dp">32dp</dimen>
+    <dimen name="padding_32dp">32dp</dimen>
+    <dimen name="margin_48dp">48dp</dimen>
+    <dimen name="margin_64dp">64dp</dimen>
+    <dimen name="padding_48dp">48dp</dimen>
 
 </resources>
