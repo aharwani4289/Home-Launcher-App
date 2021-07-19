@@ -7,7 +7,7 @@ interface AppsRepository {
 
     suspend fun deleteApp(packageName: String)
 
-    suspend fun loadInstalledApps(): List<ContentItem.Application>
+    suspend fun getInstalledApps(query: String?): List<ContentItem.Application>
 
     fun getApplicationInfo(packageName: String): ContentItem.Application?
 

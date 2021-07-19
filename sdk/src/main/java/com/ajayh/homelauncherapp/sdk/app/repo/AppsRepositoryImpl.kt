@@ -42,10 +42,14 @@ class AppsRepositoryImpl constructor(
         context.registerReceiver(receiver, intentFilter)
     }
 
-    override suspend fun loadInstalledApps(): List<Application> {
+    override suspend fun getInstalledApps(query: String?): List<Application> {
         val allInstalledApps = getAllInstalledMobileApps()
         val userApps = allInstalledApps.map { mapApplicationInfoToApplication(it) }
-        return userApps.sortedBy { it.appName }
+        return if (query.isNullOrEmpty()) {
+            userApps.sortedBy { it.appName }
+        } else {
+            userApps.sortedBy { it.appName }.filter { it.appName.contains(query, true) }
+        }
     }
 
     override suspend fun deleteApp(packageName: String) {

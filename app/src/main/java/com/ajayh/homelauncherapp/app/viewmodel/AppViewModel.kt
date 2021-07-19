@@ -18,12 +18,13 @@ class AppViewModel @Inject constructor(
     val appList: LiveData<List<Application>>
         get() = mAppList
 
-    fun getApps() {
+    fun getApps(query: String?) {
         viewModelScope.launch(Dispatchers.IO) {
-            val apps = appsRepository.loadInstalledApps()
+            val apps = appsRepository.getInstalledApps(query)
             withContext(Dispatchers.Main) {
                 mAppList.value = apps
             }
         }
     }
+
 }

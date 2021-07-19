@@ -10,4 +10,7 @@
     <color name="colorPrimary">#FFFFFF</color>
 
     <color name="color_212121">#212121</color>
+    <color name="color_ffffff">#FFFFFF</color>
+    <color name="transparent_color_00000000">#00000000</color>
+    <color name="color_a6a6a6">#a6a6a6</color>
 </resources>

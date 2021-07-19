@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,12 +29,44 @@ class MainActivity : BaseActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initObserver()
+        initSearch()
+    }
+
+    private fun initSearch() {
+        //This will help to give padding end to et_search based on tv_clear size
+//        binding.tvClear.measure(0, 0)
+//        binding.etSearch.setPadding(
+//            0,
+//            0,
+//            (binding.tvClear.measuredWidth + resources.getDimension(R.dimen.dimen_size_10dp).toInt()),
+//            0
+//        )
+        binding.tvClear.setOnClickListener {
+            binding.etSearch.text?.clear()
+        }
+        binding.etSearch.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(editable: Editable?) {
+                editable?.let {
+                    if (editable.toString().trim().isNotEmpty()) binding.tvClear.visible()
+                    else binding.tvClear.gone()
+                    appViewModel.getApps(editable.toString().trim())
+                }
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+        })
     }
 
     private fun initObserver() {
         appViewModel.appList.observe(this, ::loadApps)
         binding.progressBarLayout.progressBar.visible()
-        appViewModel.getApps()
+        appViewModel.getApps(null)
     }
 
     private fun loadApps(apps: List<Application>) {
