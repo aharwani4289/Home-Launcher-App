@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Common text sizes -->
+    <dimen name="text_size_11sp">11sp</dimen>
+
+    <!-- Common padding -->
+    <dimen name="padding_8dp">8dp</dimen>
+    <dimen name="padding_16dp">16dp</dimen>
+
+    <!-- Common margins -->
+    <dimen name="margin_4dp">4dp</dimen>
+
+    <!-- Common dimens-->
+    <dimen name="dimen_size_6dp">6dp</dimen>
+    <dimen name="dimen_size_10dp">10dp</dimen>
+    <dimen name="margin_15dp">15dp</dimen>
+    <dimen name="dimen_size_29dp">29dp</dimen>
+    <dimen name="margin_36dp">36dp</dimen>
+    <dimen name="dimen_size_60dp">60dp</dimen>
+    <dimen name="dimen_size_120dp">120dp</dimen>
+
+    <dimen name="content_card_margin">@dimen/margin_4dp</dimen>
+    <dimen name="component_rail_margin_start">@dimen/margin_15dp</dimen>
+    <dimen name="margin_24dp">24dp</dimen>
+    <dimen name="dimen_size_40dp">40dp</dimen>
+
+</resources>
