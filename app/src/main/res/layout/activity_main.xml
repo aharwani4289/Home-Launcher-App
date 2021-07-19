@@ -49,11 +49,10 @@
             android:id="@+id/apps_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/padding_32dp"
-            android:paddingBottom="@dimen/padding_32dp"
+            android:paddingTop="@dimen/padding_16dp"
+            android:paddingBottom="@dimen/padding_48:wq!dp"
             android:scrollbars="none"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/search_layout" />
 
